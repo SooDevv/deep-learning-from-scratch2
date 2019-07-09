@@ -1,6 +1,6 @@
 import sys
 sys.path.append('..')
-import numpy
+import numpy as np
 import time
 import matplotlib.pyplot as plt
 from common.util import clip_grads
@@ -24,7 +24,7 @@ class Trainer:
 
         start_time = time.time()
         for epoch in range(max_epoch): #10
-            idx = numpy.random.permutation(numpy.arange(data_size))
+            idx = np.random.permutation(np.arange(data_size))
             x = x[idx]
             t = t[idx]
 
@@ -54,7 +54,7 @@ class Trainer:
             self.current_epoch += 1
 
     def plot(self, ylim=None):
-        x = numpy.arange(len(self.loss_list))
+        x = np.arange(len(self.loss_list))
         if ylim is not None:
             plt.ylim(*ylim)
         plt.plot(x, self.loss_list, label='train')
